@@ -1,23 +1,21 @@
 /**
- * Reverse String
+ * Unique Values
  * 
- * Write a function that takes a string and returns it reversed.
+ * Write a function that takes an array and returns an array containing only unique values.
+ * The order should be preserved based on first occurrence.
  */
 
-export function reverseString(str: string): string {
+export function uniqueValues<T>(arr: T[]): T[] {
   // TODO: Implement this function
-  if (!str.length || str.length === 1) return str
+  const seen = new Set()
+  const result: T[] = []
 
-  const arr = str.split("")
-
-  let left = 0
-  let right = str.length - 1
-
-  while (left < right) {
-    [arr[left], arr[right]] = [arr[right], arr[left]]
-    left++ 
-    right--
+  for (const val of arr) {
+    if (!seen.has(val)) {
+      seen.add(val)
+      result.push(val)
+    }
   }
-  return arr.join("")
+  return result
 }
 
