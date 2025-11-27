@@ -6,7 +6,7 @@
 if [ -z "$1" ]; then
   echo "Error: Please provide a drill name"
   echo "Usage: ./scripts/load-drill.sh <drill-name>"
-  echo "Example: ./scripts/load-drill.sh reverse-string"
+      echo "Example: ./scripts/load-drill.sh 01-reverse-string"
   exit 1
 fi
 
