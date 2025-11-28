@@ -1,39 +1,32 @@
 /**
- * Max Occurrence
+ * Reverse Vowels
  * 
- * Write a function that finds the character (or element) that appears most frequently
- * in a string (or array). If there's a tie, return the one that appears first.
+ * Given a string, reverse only the vowels (a, e, i, o, u) while keeping
+ * consonants in their original positions. Use two-pointer technique.
  */
 
-export function maxOccurrence(input: string | any[]): string | any {
-  // TODO: Implement this function
-  if (typeof input === 'string' && !input.length) return ''
-  const inputArray = typeof input === "string" ? input.split("") : input
-  
-  if (!inputArray.length) return undefined
-  if (inputArray.length === 1) return inputArray[0]
+export function reverseVowels(s: string): string {
+  const vowels = new Set("aeiouAEIOU");
+  const strAry = s.split("");
+  let left = 0;
+  let right = s.length - 1;
 
-  const countMap = new Map<any, number>();
-
-  let maxCount = 0;
-
-
-  for (const ele of inputArray) {
-    const count = (countMap.get(ele) ?? 0) + 1;
-    countMap.set(ele, count);
-
-    if (count > maxCount) {
-      maxCount = count;
+  while (left < right) {
+    // Move left pointer until it finds a vowel
+    while (left < right && !vowels.has(strAry[left])) {
+      left++;
+    }
+    // Move right pointer until it finds a vowel
+    while (left < right && !vowels.has(strAry[right])) {
+      right--;
+    }
+    // Swap vowels if both pointers haven't crossed
+    if (left < right) {
+      [strAry[left], strAry[right]] = [strAry[right], strAry[left]];
+      left++;
+      right--;
     }
   }
-
-
-  for (const ele of inputArray) {
-    if (countMap.get(ele) === maxCount) {
-      return ele
-    }
-  }
-
-  return undefined
+  return strAry.join("");
 }
 
