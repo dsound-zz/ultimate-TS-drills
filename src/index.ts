@@ -1,21 +1,23 @@
 /**
- * Array Chunk
+ * Is Palindrome
  * 
- * Write a function that splits an array into chunks of a specified size.
- * The last chunk may be smaller than the specified size if the array length
- * is not evenly divisible by the chunk size.
+ * Write a function that checks if a string is a palindrome.
+ * A palindrome is a word, phrase, number, or other sequence of characters
+ * that reads the same forward and backward (ignoring case, spaces, and punctuation).
  */
 
-export function arrayChunk<T>(arr: T[], size: number): T[][] {
-  if (arr.length === 0) return [];
-  if (size <= 0) return [];
+export function isPalindrome(str: string): boolean {
+  const cleanedStr = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+  
+  let left = 0;
+  let right = cleanedStr.length - 1;
 
-  const result: T[][] = [];
-
-  for (let i = 0; i < arr.length; i += size) {
-    result.push(arr.slice(i, i + size));
+  while (left < right) {
+    if (cleanedStr[left] !== cleanedStr[right]) return false;
+    left++;
+    right--;
   }
-
-  return result;
+  
+  return true;
 }
 
