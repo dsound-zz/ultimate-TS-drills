@@ -1,21 +1,21 @@
 /**
- * Unique Values
+ * Array Chunk
  * 
- * Write a function that takes an array and returns an array containing only unique values.
- * The order should be preserved based on first occurrence.
+ * Write a function that splits an array into chunks of a specified size.
+ * The last chunk may be smaller than the specified size if the array length
+ * is not evenly divisible by the chunk size.
  */
 
-export function uniqueValues<T>(arr: T[]): T[] {
-  // TODO: Implement this function
-  const seen = new Set()
-  const result: T[] = []
+export function arrayChunk<T>(arr: T[], size: number): T[][] {
+  if (arr.length === 0) return [];
+  if (size <= 0) return [];
 
-  for (const val of arr) {
-    if (!seen.has(val)) {
-      seen.add(val)
-      result.push(val)
-    }
+  const result: T[][] = [];
+
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
   }
-  return result
+
+  return result;
 }
 
