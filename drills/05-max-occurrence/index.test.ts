@@ -34,7 +34,7 @@ describe('maxOccurrence', () => {
   });
 
   test('handles array with tie (returns first)', () => {
-    expect(maxOccurrence([1, 2, 2, 1, 1])).toBe(1);
+    expect(maxOccurrence([1, 2, 2, 1])).toBe(1);
   });
 
   test('handles empty array', () => {

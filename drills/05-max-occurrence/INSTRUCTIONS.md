@@ -22,7 +22,7 @@ maxOccurrence('')                         // ''
 maxOccurrence('aaaa')                     // 'a'
 maxOccurrence([1, 2, 2, 3, 3, 3])        // 3 (appears 3 times)
 maxOccurrence(['a', 'b', 'a', 'c', 'a']) // 'a' (appears 3 times)
-maxOccurrence([1, 2, 2, 1, 1])           // 1 (appears 2 times, but appears first)
+maxOccurrence([1, 2, 2, 1])           // 1 (appears 2 times, but appears first)
 ```
 
 ## Notes

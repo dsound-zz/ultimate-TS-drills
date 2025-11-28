@@ -1,44 +1,48 @@
-import { isPalindrome } from './index';
+import { maxOccurrence } from './index';
 
-describe('isPalindrome', () => {
-  test('identifies simple palindrome', () => {
-    expect(isPalindrome('racecar')).toBe(true);
+describe('maxOccurrence', () => {
+  test('finds most frequent character in string', () => {
+    expect(maxOccurrence('hello')).toBe('l');
   });
 
-  test('identifies non-palindrome', () => {
-    expect(isPalindrome('hello')).toBe(false);
+  test('finds most frequent character with tie (returns first)', () => {
+    expect(maxOccurrence('hello world')).toBe('l');
   });
 
-  test('handles single character', () => {
-    expect(isPalindrome('a')).toBe(true);
+  test('handles single character string', () => {
+    expect(maxOccurrence('a')).toBe('a');
   });
 
   test('handles empty string', () => {
-    expect(isPalindrome('')).toBe(true);
+    expect(maxOccurrence('')).toBe('');
   });
 
-  test('handles palindrome with different cases', () => {
-    expect(isPalindrome('Racecar')).toBe(true);
+  test('handles string with all same characters', () => {
+    expect(maxOccurrence('aaaa')).toBe('a');
   });
 
-  test('handles palindrome with spaces', () => {
-    expect(isPalindrome('race car')).toBe(true);
+  test('handles string with numbers', () => {
+    expect(maxOccurrence('112233')).toBe('1');
   });
 
-  test('handles palindrome with punctuation', () => {
-    expect(isPalindrome('A man a plan a canal Panama')).toBe(true);
+  test('handles array of numbers', () => {
+    expect(maxOccurrence([1, 2, 2, 3, 3, 3])).toBe(3);
   });
 
-  test('handles numeric palindrome', () => {
-    expect(isPalindrome('12321')).toBe(true);
+  test('handles array of strings', () => {
+    expect(maxOccurrence(['a', 'b', 'a', 'c', 'a'])).toBe('a');
   });
 
-  test('handles non-palindrome with spaces', () => {
-    expect(isPalindrome('hello world')).toBe(false);
+  test('handles array with tie (returns first)', () => {
+    expect(maxOccurrence([1, 2, 2, 1])).toBe(1);
   });
 
-  test('handles palindrome with special characters', () => {
-    expect(isPalindrome('Madam, I\'m Adam')).toBe(true);
+  test('handles empty array', () => {
+    expect(maxOccurrence([])).toBe(undefined);
+  });
+
+  test('handles string with spaces', () => {
+    expect(maxOccurrence('hello world')).toBe('l');
   });
 });
 
