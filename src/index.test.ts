@@ -1,37 +1,45 @@
-import { reverseVowels } from './index';
+import { removeDuplicatesInPlace } from './index';
 
-describe('reverseVowels', () => {
-  test('reverses vowels in simple string', () => {
-    expect(reverseVowels('hello')).toBe('holle');
+describe('removeDuplicatesInPlace', () => {
+  test('removes duplicates from sorted array', () => {
+    const nums = [1, 1, 2];
+    const length = removeDuplicatesInPlace(nums);
+    expect(length).toBe(2);
+    expect(nums.slice(0, length)).toEqual([1, 2]);
   });
 
-  test('reverses vowels in "leetcode"', () => {
-    expect(reverseVowels('leetcode')).toBe('leotcede');
+  test('handles multiple duplicates', () => {
+    const nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+    const length = removeDuplicatesInPlace(nums);
+    expect(length).toBe(5);
+    expect(nums.slice(0, length)).toEqual([0, 1, 2, 3, 4]);
   });
 
-  test('handles string with no vowels', () => {
-    expect(reverseVowels('bcdfg')).toBe('bcdfg');
+  test('handles array with no duplicates', () => {
+    const nums = [1, 2, 3, 4, 5];
+    const length = removeDuplicatesInPlace(nums);
+    expect(length).toBe(5);
+    expect(nums.slice(0, length)).toEqual([1, 2, 3, 4, 5]);
   });
 
-  test('handles string with only vowels', () => {
-    expect(reverseVowels('aeiou')).toBe('uoiea');
+  test('handles single element', () => {
+    const nums = [1];
+    const length = removeDuplicatesInPlace(nums);
+    expect(length).toBe(1);
+    expect(nums.slice(0, length)).toEqual([1]);
   });
 
-  test('handles uppercase vowels', () => {
-    expect(reverseVowels('HELLO')).toBe('HOLLE');
+  test('handles all same elements', () => {
+    const nums = [1, 1, 1, 1];
+    const length = removeDuplicatesInPlace(nums);
+    expect(length).toBe(1);
+    expect(nums.slice(0, length)).toEqual([1]);
   });
 
-  test('handles mixed case', () => {
-    expect(reverseVowels('aA')).toBe('Aa');
-  });
-
-  test('handles empty string', () => {
-    expect(reverseVowels('')).toBe('');
-  });
-
-  test('handles single character', () => {
-    expect(reverseVowels('a')).toBe('a');
-    expect(reverseVowels('b')).toBe('b');
+  test('handles empty array', () => {
+    const nums: number[] = [];
+    const length = removeDuplicatesInPlace(nums);
+    expect(length).toBe(0);
   });
 });
 
